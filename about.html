@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learnix Space — About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#3883FF;--ink:#000000;--body:#84888A;--nav-inactive:#A4A8B2;--logo:#2E3D50;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:#fff;color:var(--ink);}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
+
+  /* NAVBAR */
+  .nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:28px 0;}
+  .logo{display:flex;flex-direction:column;line-height:1;}
+  .logo .name{font-family:'Poppins',sans-serif;font-weight:700;font-size:28px;color:var(--logo);position:relative;letter-spacing:-.5px;}
+  .logo .rocket{position:absolute;top:-9px;right:-4px;width:16px;height:16px;}
+  .logo .space{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:7px;color:var(--logo);margin-top:4px;padding-left:2px;}
+  .menu{display:flex;gap:56px;position:absolute;left:50%;transform:translateX(-50%);}
+  .menu a{font-family:'Inter',sans-serif;font-weight:600;font-size:13px;color:var(--nav-inactive);text-decoration:none;position:relative;padding-bottom:8px;transition:color .2s ease;}
+  .menu a:hover{color:#6b7280;}
+  .menu a.active{color:var(--blue);}
+  .menu a.active::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:var(--blue);border-radius:3px;}
+
+  /* ABOUT HERO */
+  .about-hero{background:linear-gradient(180deg,#edf3ff 0%,#f6f9ff 62%,#ffffff 100%);text-align:center;padding:60px 0 150px;}
+  .about-hero h1{font-family:'Poppins',sans-serif;font-weight:600;font-size:44px;color:#141722;letter-spacing:-.6px;}
+  .about-hero .sub{font-family:'Poppins',sans-serif;font-weight:500;font-size:20px;color:var(--blue);margin-top:16px;}
+  .about-hero .desc{font-family:'Inter',sans-serif;font-weight:400;font-size:16px;line-height:1.7;color:#6b7280;max-width:600px;margin:14px auto 0;}
+  .about-hero .desc em{font-style:italic;}
+
+  /* ABOUT CARDS */
+  .about-cards{padding-bottom:100px;}
+  .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:-82px;align-items:stretch;}
+  .about-card{
+    background:#fff;border:1px solid #eef0f4;border-radius:18px;padding:36px 32px;
+    box-shadow:0 18px 44px rgba(30,41,80,.07);
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  }
+  .about-card:hover{transform:translateY(-6px);box-shadow:0 26px 54px rgba(56,131,255,.14);border-color:#dbe6ff;}
+  .about-accent{width:42px;height:4px;border-radius:4px;background:var(--blue);margin-bottom:24px;}
+  .about-card h3{font-family:'Poppins',sans-serif;font-weight:600;font-size:22px;color:#1a1d29;margin-bottom:16px;}
+  .about-card p{font-family:'Inter',sans-serif;font-weight:400;font-size:15px;line-height:1.75;color:#5c6069;}
+  .about-card p strong{font-weight:600;color:#3a3f48;}
+  .about-card p em{font-style:italic;}
+  .about-card p + p{margin-top:10px;}
+
+  .about-list{list-style:none;margin-top:2px;}
+  .about-list li{display:flex;align-items:center;gap:13px;font-family:'Inter',sans-serif;font-size:15.5px;font-weight:500;color:#3a3f48;padding:10px;border-radius:12px;cursor:default;transition:background .2s ease,transform .2s ease;}
+  .about-list li:hover{background:#f4f8ff;transform:translateX(4px);}
+  .about-list li .ic{width:38px;height:38px;border-radius:11px;background:#eaf1ff;color:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s ease;}
+  .about-list li:hover .ic{transform:scale(1.08);}
+  .about-list li .ic svg{width:19px;height:19px;}
+
+  /* FOOTER */
+  .footer{border-top:1px solid #eef0f4;padding:56px 0 28px;}
+  .footer-top{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;margin-bottom:40px;}
+  .footer-brand{max-width:320px;}
+  .footer-logo{font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:var(--logo);}
+  .footer-tagline{font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;color:#84888A;margin-top:14px;}
+  .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .footer-col h4{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:#1a1d29;margin-bottom:18px;}
+  .footer-col a{display:block;font-family:'Inter',sans-serif;font-size:14px;color:#84888A;text-decoration:none;margin-bottom:12px;transition:color .2s ease;}
+  .footer-col a:hover{color:var(--blue);}
+  .footer-bottom{border-top:1px solid #eef0f4;padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+  .footer-copy{font-family:'Inter',sans-serif;font-size:13px;color:#A4A8B2;}
+  .footer-social{display:flex;gap:12px;}
+  .footer-social a{width:34px;height:34px;border-radius:50%;background:#f2f5fb;display:flex;align-items:center;justify-content:center;color:#84888A;transition:background .2s ease,color .2s ease,transform .2s ease;}
+  .footer-social a:hover{background:var(--blue);color:#fff;transform:translateY(-2px);}
+  .footer-social svg{width:17px;height:17px;}
+
+  @media (max-width:900px){
+    .about-grid{grid-template-columns:1fr;margin-top:-60px;}
+    .about-hero h1{font-size:32px;}
+    .menu{gap:28px;}
+    .footer-top{flex-direction:column;gap:32px;}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 20px;}
+    .menu{display:none;}
+    .footer-bottom{flex-direction:column;text-align:center;gap:16px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+    <nav class="nav">
+      <div class="logo">
+        <span class="name">LearniX
+          <svg class="rocket" viewBox="0 0 24 24" fill="none"><path d="M12 2c2.5 2 4 5 4 8 0 2-1 3.5-2 4.5H10C9 13.5 8 12 8 10c0-3 1.5-6 4-8z" fill="#5B9BFF"/><path d="M8.5 14L6 17l3 .5M15.5 14L18 17l-3 .5" stroke="#5B9BFF" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <span class="space">SPACE</span>
+      </div>
+      <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="project.html">Project</a>
+        <a href="about.html" class="active">About</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ABOUT HERO -->
+  <section class="about-hero">
+    <div class="wrap">
+      <h1>About Us</h1>
+      <p class="sub">Selamat Datang di LearniX Space</p>
+      <p class="desc">Pengembangan Skill Mahasiswa dan <em>Fresh Graduate</em> Teknologi Pendidikan Sebagai Bekal di Dunia Kerja</p>
+    </div>
+  </section>
+
+  <!-- ABOUT CARDS -->
+  <section class="about-cards">
+    <div class="wrap">
+      <div class="about-grid">
+        <!-- Card 1 -->
+        <div class="about-card">
+          <div class="about-accent"></div>
+          <h3>Who Are We</h3>
+<p>"Learnix Space" adalah rancangan platform digital berbasis website yang menyediakan <strong>materi pembelajaran, video tutorial, dan referensi proyek</strong> bagi mahasiswa dan <em>fresh graduate</em> di bidang Teknologi Pendidikan (TP).</p>
+<p>Platform ini membantu pengguna mengembangkan kompetensi yang relevan dengan kebutuhan industri dan mempersiapkan diri menghadapi dunia kerja.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="about-card">
+          <div class="about-accent"></div>
+          <h3>Our Mission</h3>
+  <p>Misi utamanya adalah mendukung <strong>pengembangan kompetensi Teknologi Pendidikan</strong> melalui penyediaan sumber belajar yang praktis dan relevan dengan kebutuhan industri.</p>
+<p>– Menyediakan modul pembelajaran yang terstruktur dan mudah dipahami.</p>
+<p>– Menyajikan video tutorial dan contoh proyek sebagai referensi belajar mandiri.</p>
+<p>– Menjadi langkah awal menuju platform pengembangan kompetensi, konsultasi, dan kolaborasi di bidang Teknologi Pendidikan.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="about-card">
+          <div class="about-accent"></div>
+          <h3>What We Do</h3>
+     <ul class="about-list">
+  <li><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V6a2 2 0 012-2h5v15H6a2 2 0 00-2 2zM20 19V6a2 2 0 00-2-2h-5v15h5a2 2 0 012 2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>Modul Pembelajaran Terstruktur</li>
+
+  <li><span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3c2.6 2 4.2 5.2 4.2 8.4 0 2-.9 3.6-2 4.6H9.8c-1.1-1-2-2.6-2-4.6C7.8 8.2 9.4 5 12 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 17l-2 3 2 .3M15 17l2 3-2 .3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="10" r="1.4" fill="currentColor"/></svg></span>Contoh Proyek Industri</li>
+
+  <li><span class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="12" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 8V6a2 2 0 012-2h4a2 2 0 012 2v2" stroke="currentColor" stroke-width="1.7"/></svg></span>Rekomendasi Jalur Karier</li>
+</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">LearniX</div>
+          <p class="footer-tagline">Platform belajar bagi mahasiswa dan fresh graduate Teknologi Pendidikan untuk mengasah skill dan meraih karier impian.</p>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col"><h4>Navigasi</h4><a href="index.html">Home</a><a href="project.html">Project</a><a href="about.html">About</a></div>
+          <div class="footer-col"><h4>Kontak</h4><a href="#">hello@learnix.space</a><a href="#">Surabaya, Indonesia</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 Learnix Space. All rights reserved.</div>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 8.5v10M6.5 5.5v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 18.5v-6a3 3 0 016 0v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M11 9.5l4 2.5-4 2.5v-5z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

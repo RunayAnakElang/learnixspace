@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learnix Space — Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--blue:#3883FF;
+--ink:#000000;
+--body:#84888A;
+--nav-inactive:#A4A8B2;
+--logo:#2E3D50;
+  }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#fff;color:var(--ink);}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
+/* ---------- NAVBAR (sama dengan halaman utama) ---------- */
+.nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:28px 0;}
+.logo{display:flex;flex-direction:column;line-height:1;}
+.logo .name{font-family:'Poppins',sans-serif;font-weight:700;font-size:28px;color:var(--logo);position:relative;letter-spacing:-.5px;}
+.logo .rocket{position:absolute;top:-9px;right:-4px;width:16px;height:16px;}
+.logo .space{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:7px;color:var(--logo);margin-top:4px;padding-left:2px;}
+.menu{display:flex;gap:56px;position:absolute;left:50%;transform:translateX(-50%);}
+.menu a{
+font-family:'Inter',sans-serif;font-weight:600;font-size:13px;
+color:var(--nav-inactive);text-decoration:none;position:relative;padding-bottom:8px;
+transition:color .2s ease;
+  }
+.menu a:hover{color:#6b7280;}
+.menu a.active{color:var(--blue);}
+.menu a.active::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:var(--blue);border-radius:3px;}
+.menu a:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:2px;}
+/* ---------- PROJECT SECTION ---------- */
+.projects{padding:24px 0 90px;}
+.projects-head{margin-bottom:36px;}
+.projects-title{font-family:'Poppins',sans-serif;font-weight:500;font-size:34px;color:#1a1d29;letter-spacing:-.5px;}
+.project-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.project-card{
+display:block;             
+text-decoration:none;     
+background:#fff;border:1px solid #eef0f4;border-radius:16px;cursor:pointer;padding:14px;
+box-shadow:0 10px 30px rgba(30,41,80,.05);
+transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  }
+.project-card:hover{transform:translateY(-6px);box-shadow:0 20px 46px rgba(56,131,255,.14);border-color:#dbe6ff;}
+.project-thumb{height:150px;border-radius:12px;overflow:hidden;background:#e6e6e8;margin-bottom:16px;}
+.project-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+.project-card:hover .project-thumb img{transform:scale(1.06);}
+.project-body{padding:0 4px 6px;}
+.project-tag{display:inline-block;font-family:'Inter',sans-serif;font-weight:500;font-size:11px;color:var(--blue);background:#eaf1ff;padding:4px 11px;border-radius:20px;margin-bottom:12px;}
+.project-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;color:#1a1d29;margin-bottom:8px;}
+.project-desc{font-family:'Inter',sans-serif;font-weight:400;font-size:13px;line-height:1.6;color:#84888A;}
+/* ---------- FOOTER (sama dengan halaman utama) ---------- */
+.footer{border-top:1px solid #eef0f4;padding:56px 0 28px;margin-top:20px;}
+.footer-top{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;margin-bottom:40px;}
+.footer-brand{max-width:320px;}
+.footer-logo{font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:var(--logo);letter-spacing:-.3px;}
+.footer-tagline{font-family:'Inter',sans-serif;font-weight:400;font-size:14px;line-height:1.7;color:#84888A;margin-top:14px;}
+.footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+.footer-col h4{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:#1a1d29;margin-bottom:18px;}
+.footer-col a{display:block;font-family:'Inter',sans-serif;font-weight:400;font-size:14px;color:#84888A;text-decoration:none;margin-bottom:12px;transition:color .2s ease;}
+.footer-col a:hover{color:var(--blue);}
+.footer-bottom{border-top:1px solid #eef0f4;padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+.footer-copy{font-family:'Inter',sans-serif;font-weight:400;font-size:13px;color:#A4A8B2;}
+.footer-social{display:flex;gap:12px;}
+.footer-social a{width:34px;height:34px;border-radius:50%;background:#f2f5fb;display:flex;align-items:center;justify-content:center;color:#84888A;transition:background .2s ease,color .2s ease,transform .2s ease;}
+.footer-social a:hover{background:var(--blue);color:#fff;transform:translateY(-2px);}
+.footer-social svg{width:17px;height:17px;}
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1080px){.project-grid{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:760px){
+.project-grid{grid-template-columns:repeat(2,1fr);}
+.menu{gap:28px;}
+.projects-title{font-size:28px;}
+.footer-top{flex-direction:column;gap:32px;}
+  }
+@media (max-width:520px){
+.wrap{padding:0 20px;}
+.menu{display:none;}
+.project-grid{grid-template-columns:1fr;}
+.footer-bottom{flex-direction:column;text-align:center;gap:16px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<!-- NAVBAR -->
+<nav class="nav">
+<div class="logo">
+<span class="name">LearniX
+<svg class="rocket" viewBox="0 0 24 24" fill="none">
+<path d="M12 2c2.5 2 4 5 4 8 0 2-1 3.5-2 4.5H10C9 13.5 8 12 8 10c0-3 1.5-6 4-8z" fill="#5B9BFF"/>
+<path d="M8.5 14L6 17l3 .5M15.5 14L18 17l-3 .5" stroke="#5B9BFF" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+</span>
+<span class="space">SPACE</span>
+</div>
+<div class="menu">
+<a href="index.html" data-nav>Home</a>
+<a href="project.html" data-nav class="active">Project</a>
+<a href="about.html" data-nav>About</a>
+</div>
+</nav>
+<!-- PROJECT SECTION -->
+<section class="projects">
+<div class="projects-head">
+<h1 class="projects-title">Project</h1>
+</div>
+<div class="project-grid">
+<!-- Card 1 -->
+<a class="project-card" href="detailproject1.html">
+<div class="project-thumb"><img src="asset/meeting.jpg" alt="Project"></div>
+<div class="project-body">
+<span class="project-tag">E-Learning</span>
+<div class="project-name">Mendesain Modul Onboarding Karyawan Baru</div>
+<p class="project-desc">Modul onboarding digital yang ringkas dan interaktif untuk karyawan baru.</p>
+</div>
+</a>
+<!-- Card 2 -->
+<a class="project-card" href="detailproject2.html">
+<div class="project-thumb"><img src="asset/coding.jpg" alt="Project"></div>
+<div class="project-body">
+<span class="project-tag">UI/UX Design</span>
+<div class="project-name">Redesign Website Sekolah</div>
+<p class="project-desc">Merancang ulang website sekolah agar lebih modern, responsif, dan mudah diakses.</p>
+</div>
+</a>
+<!-- Card 3 -->
+<a class="project-card" href="detailproject3.html">
+<div class="project-thumb"><img src="asset/posters.png" alt="Project"></div>
+<div class="project-body">
+<span class="project-tag">Digital Campaign</span>
+<div class="project-name">Membuat Kampanye Edukasi Anti Cyberbullying</div>
+<p class="project-desc">Kampanye edukatif untuk meningkatkan kesadaran pelajar terhadap bahaya cyberbullying.</p>
+</div>
+</a>
+<!-- Card 4 -->
+<a class="project-card" href="detailproject4.html">
+<div class="project-thumb"><img src="asset/pelatihan.jpeg" alt="Project"></div>
+<div class="project-body">
+<span class="project-tag">Training Program</span>
+<div class="project-name">Mendesain Program Pelatihan Literasi Digital untuk Guru</div>
+<p class="project-desc">Program pelatihan yang membekali guru dengan keterampilan literasi digital.</p>
+</div>
+</a>
+<!-- Card 5 -->
+<a class="project-card" href="detailproject5.html">
+<div class="project-thumb"><img src="asset/vr.jpg" alt="Project"></div>
+<div class="project-body">
+<span class="project-tag">Virtual Experience</span>
+<div class="project-name">Mengembangkan Museum Virtual Sejarah Indonesia</div>
+<p class="project-desc">Museum virtual interaktif yang menghadirkan sejarah Indonesia secara digital.</p>
+</div>
+</a>
+<!-- Card 6 -->
+<a class="project-card" href="detailproject6.html">
+<div class="project-thumb"><img src="asset/kesix.jpg" alt="Project"></div>
+<div class="project-body">
+<span class="project-tag">LMS Development</span>
+<div class="project-name">Mengembangkan Program Orientasi Mahasiswa Baru Berbasis LMS</div>
+<p class="project-desc">Program orientasi mahasiswa baru yang terstruktur melalui platform LMS.</p>
+</div>
+</a>
+<!-- Card 7 -->
+<a class="project-card" href="detailproject7.html">
+<div class="project-thumb"><img src="asset/terakhir.jpeg" alt="Project"></div>
+<div class="project-body">
+<span class="project-tag">Mobile Learning</span>
+<div class="project-name">Mendesain Program Pembelajaran untuk Pengguna Aplikasi Mobile Banking</div>
+<p class="project-desc">Materi edukasi yang membantu pengguna memahami fitur dan keamanan mobile banking.</p>
+</div>
+</a>
+</div>
+</section>
+</div>
+<!-- FOOTER -->
+<footer class="footer">
+<div class="wrap">
+<div class="footer-top">
+<div class="footer-brand">
+<div class="footer-logo">LearniX</div>
+<p class="footer-tagline">Platform belajar bagi mahasiswa dan fresh graduate Teknologi Pendidikan untuk mengasah skill dan meraih karier impian.</p>
+</div>
+<div class="footer-cols">
+<div class="footer-col">
+<h4>Navigasi</h4>
+<a href="index.html">Home</a>
+<a href="project.html">Project</a>
+<a href="about.html">About</a>
+</div>
+<div class="footer-col">
+<h4>Kontak</h4>
+<a href="#">hello@learnix.space</a>
+<a href="#">Surabaya, Indonesia</a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-copy">&copy; 2026 Learnix Space. All rights reserved.</div>
+<div class="footer-social">
+<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+<a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 8.5v10M6.5 5.5v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 18.5v-6a3 3 0 016 0v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></a>
+<a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M11 9.5l4 2.5-4 2.5v-5z" fill="currentColor"/></svg></a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+// Navbar active toggle
+document.querySelectorAll('[data-nav]').forEach(function(link){
+link.addEventListener('click', function(e){
+if(link.getAttribute('href') === '#'){ e.preventDefault(); }
+document.querySelectorAll('[data-nav]').forEach(function(l){ l.classList.remove('active'); });
+link.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learnix Space — Detail Project</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#3883FF;--ink:#000000;--body:#84888A;--nav-inactive:#A4A8B2;--logo:#2E3D50;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:#fff;color:var(--ink);}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 40px;}
+
+  /* NAVBAR */
+  .nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:28px 0;}
+  .logo{display:flex;flex-direction:column;line-height:1;}
+  .logo .name{font-family:'Poppins',sans-serif;font-weight:700;font-size:28px;color:var(--logo);position:relative;letter-spacing:-.5px;}
+  .logo .rocket{position:absolute;top:-9px;right:-4px;width:16px;height:16px;}
+  .logo .space{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:7px;color:var(--logo);margin-top:4px;padding-left:2px;}
+  .menu{display:flex;gap:56px;position:absolute;left:50%;transform:translateX(-50%);}
+  .menu a{font-family:'Inter',sans-serif;font-weight:600;font-size:13px;color:var(--nav-inactive);text-decoration:none;position:relative;padding-bottom:8px;transition:color .2s ease;}
+  .menu a:hover{color:#6b7280;}
+  .menu a.active{color:var(--blue);}
+  .menu a.active::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:var(--blue);border-radius:3px;}
+
+  /* DETAIL HEADER */
+  .detail{padding:16px 0 90px;}
+  .crumbrow{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap;}
+  .crumbrow .tag{margin-bottom:0;}
+  .crumbs{font-family:'Inter',sans-serif;font-size:14px;color:var(--nav-inactive);display:flex;align-items:center;gap:8px;}
+  .crumbs a{color:var(--nav-inactive);text-decoration:none;transition:color .2s ease;}
+  .crumbs a:hover{color:var(--blue);}
+  .crumbs .cur{color:#1a1d29;font-weight:500;}
+  .back-btn{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-weight:500;font-size:14px;color:#1a1d29;text-decoration:none;border:1px solid #e6e9ef;border-radius:40px;padding:10px 20px;transition:background .2s ease,border-color .2s ease,transform .15s ease;}
+  .back-btn:hover{background:#f5f8ff;border-color:#cfe0ff;transform:translateX(-3px);}
+  .back-btn svg{width:16px;height:16px;}
+
+  .tag{display:inline-block;font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.5px;color:var(--blue);background:#eaf1ff;padding:7px 16px;border-radius:30px;text-transform:uppercase;margin-bottom:22px;}
+  .detail-title{font-family:'Poppins',sans-serif;font-weight:600;font-size:40px;line-height:1.15;color:#141722;letter-spacing:-.6px;max-width:900px;}
+  .detail-meta{display:flex;align-items:center;gap:26px;margin-top:20px;flex-wrap:wrap;}
+  .detail-meta span{display:flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:15px;color:var(--body);}
+  .detail-meta svg{width:17px;height:17px;color:var(--nav-inactive);}
+
+.hero-img{width:100%;height:520px;object-fit:cover;object-position:center;border-radius:20px;margin:34px 0 44px;background:#e6e6e8;}
+
+  /* BODY 2 COLUMN */
+  .layout{display:grid;grid-template-columns:1fr 340px;gap:52px;align-items:start;}
+  .content h2{font-family:'Poppins',sans-serif;font-weight:600;font-size:22px;color:#1a1d29;margin:34px 0 14px;}
+  .content h2:first-child{margin-top:0;}
+  .content p{font-family:'Inter',sans-serif;font-size:16px;line-height:1.75;color:#5c6069;}
+  .checklist{list-style:none;margin:6px 0 0;}
+  .checklist li{display:flex;align-items:flex-start;gap:12px;font-family:'Inter',sans-serif;font-size:15.5px;line-height:1.6;color:#5c6069;padding:9px 0;border-bottom:1px solid #f2f4f8;}
+  .checklist li svg{width:20px;height:20px;flex-shrink:0;margin-top:1px;color:var(--blue);}
+
+  /* SIDEBAR */
+  .sidebar{position:sticky;top:24px;display:flex;flex-direction:column;gap:20px;}
+  .card{background:#fff;border:1px solid #eef0f4;border-radius:18px;padding:26px 24px;box-shadow:0 14px 40px rgba(30,41,80,.06);}
+  .card h3{font-family:'Poppins',sans-serif;font-weight:600;font-size:17px;color:#1a1d29;margin-bottom:18px;}
+  .fact{display:flex;flex-direction:column;gap:3px;padding:11px 0;border-bottom:1px solid #f2f4f8;}
+  .fact:last-child{border-bottom:none;padding-bottom:0;}
+  .fact .k{font-family:'Inter',sans-serif;font-size:12px;color:var(--nav-inactive);text-transform:uppercase;letter-spacing:.4px;}
+  .fact .v{font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:#1a1d29;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+  .chip{font-family:'Inter',sans-serif;font-size:12.5px;color:#3a4560;background:#f2f5fb;padding:6px 12px;border-radius:20px;}
+  .btn-primary{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--blue);color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:15px;border:none;border-radius:40px;padding:15px;cursor:pointer;width:100%;box-shadow:0 8px 20px rgba(56,131,255,.25);transition:transform .15s ease,box-shadow .2s ease;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(56,131,255,.35);}
+  .btn-ghost{display:flex;align-items:center;justify-content:center;gap:8px;background:#fff;color:#1a1d29;font-family:'Inter',sans-serif;font-weight:500;font-size:14px;border:1px solid #e6e9ef;border-radius:40px;padding:13px;cursor:pointer;width:100%;margin-top:10px;text-decoration:none;transition:background .2s ease,border-color .2s ease;}
+  .btn-ghost:hover{background:#f5f8ff;border-color:#cfe0ff;}
+
+  /* JABATAN RELEVAN */
+  .roles{margin-top:64px;}
+  .roles-title{font-family:'Poppins',sans-serif;font-weight:600;font-size:26px;color:#1a1d29;margin-bottom:8px;}
+  .roles-sub{font-family:'Inter',sans-serif;font-weight:300;font-size:16px;color:var(--nav-inactive);margin-bottom:30px;}
+  .roles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .role-card{background:#fff;border:1px solid #eef0f4;border-radius:16px;padding:22px 22px;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;}
+  .role-card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(56,131,255,.12);border-color:#dbe6ff;}
+  .role-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;color:#1a1d29;margin-bottom:8px;}
+  .role-desc{font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.6;color:#84888A;}
+
+  /* FOOTER */
+  .footer{border-top:1px solid #eef0f4;padding:56px 0 28px;margin-top:20px;}
+  .footer-top{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;margin-bottom:40px;}
+  .footer-brand{max-width:320px;}
+  .footer-logo{font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:var(--logo);}
+  .footer-tagline{font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;color:#84888A;margin-top:14px;}
+  .footer-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .footer-col h4{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:#1a1d29;margin-bottom:18px;}
+  .footer-col a{display:block;font-family:'Inter',sans-serif;font-size:14px;color:#84888A;text-decoration:none;margin-bottom:12px;transition:color .2s ease;}
+  .footer-col a:hover{color:var(--blue);}
+  .footer-bottom{border-top:1px solid #eef0f4;padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+  .footer-copy{font-family:'Inter',sans-serif;font-size:13px;color:#A4A8B2;}
+  .footer-social{display:flex;gap:12px;}
+  .footer-social a{width:34px;height:34px;border-radius:50%;background:#f2f5fb;display:flex;align-items:center;justify-content:center;color:#84888A;transition:background .2s ease,color .2s ease,transform .2s ease;}
+  .footer-social a:hover{background:var(--blue);color:#fff;transform:translateY(-2px);}
+  .footer-social svg{width:17px;height:17px;}
+
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;gap:36px;}
+    .sidebar{position:static;}
+    .detail-title{font-size:30px;}
+    .roles-grid{grid-template-columns:1fr;}
+    .menu{gap:28px;}
+    .footer-top{flex-direction:column;gap:32px;}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 20px;}
+    .menu{display:none;}
+    .footer-bottom{flex-direction:column;text-align:center;gap:16px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+    <!-- NAVBAR -->
+    <nav class="nav">
+      <div class="logo">
+        <span class="name">LearniX
+          <svg class="rocket" viewBox="0 0 24 24" fill="none"><path d="M12 2c2.5 2 4 5 4 8 0 2-1 3.5-2 4.5H10C9 13.5 8 12 8 10c0-3 1.5-6 4-8z" fill="#5B9BFF"/><path d="M8.5 14L6 17l3 .5M15.5 14L18 17l-3 .5" stroke="#5B9BFF" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <span class="space">SPACE</span>
+      </div>
+      <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="project.html" class="active">Project</a>
+        <a href="about.html">About</a>
+      </div>
+    </nav>
+
+    <!-- DETAIL -->
+    <section class="detail">
+      <div class="crumbrow">
+        <span class="tag">Training Program</span>
+        <a href="project.html" class="back-btn">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Kembali ke Project
+        </a>
+      </div>
+
+      <h1 class="detail-title">Mendesain Program Pelatihan Literasi Digital untuk Guru</h1>
+      <div class="detail-meta">
+        <span><svg viewBox="0 0 24 24" fill="none"><path d="M4 20V7l8-4 8 4v13" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 20v-6h6v6" stroke="currentColor" stroke-width="1.7"/></svg>Dinas Pendidikan Kabupaten X</span>
+        <span><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>2 hari · 16 jam belajar</span>
+      </div>
+
+      <!-- Ganti gambar hero ini dengan gambar project kamu -->
+      <img class="hero-img" src="asset/pelatihan.jpeg" alt="Detail project">
+
+      <div class="layout">
+        <!-- MAIN -->
+        <div class="content">
+          <h2>Latar Belakang</h2>
+          <p>Dinas Pendidikan akan mengadakan pelatihan bagi guru SMP mengenai pemanfaatan teknologi digital dalam proses pembelajaran. Program pelatihan harus dapat digunakan secara daring maupun luring.</p>
+
+          <h2>Tugas Anda</h2>
+          <p>Rancang program pelatihan yang membantu guru memahami penggunaan platform pembelajaran digital dan AI untuk kegiatan mengajar.</p>
+
+          <h2>Spesifikasi</h2>
+          <ul class="checklist">
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Durasi pelatihan 2 hari (16 jam belajar).</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Menyusun Learning Objectives menggunakan Taksonomi Bloom.</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Membuat modul pelatihan minimal 40 halaman.</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Menyediakan slide presentasi maksimal 30 slide.</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Membuat video tutorial sebanyak 5 video (5–8 menit/video).</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Menyediakan lembar praktik untuk peserta.</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Membuat pre-test dan post-test masing-masing 20 soal.</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Mendesain sertifikat digital.</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Menggunakan identitas visual yang konsisten.</li>
+          </ul>
+
+          <h2>Output</h2>
+          <ul class="checklist">
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Modul PDF.</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Slide Presentasi.</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Video Tutorial.</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Instrumen Evaluasi.</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Sertifikat.</li>
+            <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5 9-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Panduan Fasilitator.</li>
+          </ul>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+          <div class="card">
+            <h3>Quick Facts</h3>
+            <div class="fact"><span class="k">Klien</span><span class="v">Dinas Pendidikan Kabupaten X</span></div>
+            <div class="fact"><span class="k">Kategori</span><span class="v">Program Pelatihan / Instructional Design</span></div>
+            <div class="fact"><span class="k">Target Peserta</span><span class="v">Guru SMP</span></div>
+            <div class="fact"><span class="k">Tools</span>
+              <div class="chips">
+                <span class="chip">Canva</span>
+                <span class="chip">Microsoft PowerPoint</span>
+                <span class="chip">Articulate Storyline</span>
+                <span class="chip">Google Classroom</span>
+                <span class="chip">Moodle</span>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeh8xeYSNnzji2RkNA-GvlEbbI3sS9Phc9GdpDrKPclCebeb7h9_pSmS8G&s=10" target="_blank" rel="noopener" class="btn-primary" style="text-decoration:none;">
+             Contoh Project
+            </a>
+            <a href="https://www.youtube.com/results?search_query=Langkah+Cepat+membuat+Program+Pelatihan+Berbasis+Kompetensi" target="_blank" rel="noopener" class="btn-ghost">
+              <svg viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              Lihat Tutorial
+            </a>
+          </div>
+        </aside>
+      </div>
+
+      <!-- JABATAN RELEVAN -->
+      <div class="roles">
+        <h2 class="roles-title">Jabatan yang Relevan</h2>
+        <p class="roles-sub">Peran karier yang sesuai dengan project ini.</p>
+        <div class="roles-grid">
+          <div class="role-card"><div class="role-name">Instructional Designer</div><div class="role-desc">Merancang kurikulum, modul, aktivitas belajar, dan evaluasi pelatihan literasi digital untuk guru.</div></div>
+          <div class="role-card"><div class="role-name">Learning & Development (L&D) Specialist</div><div class="role-desc">Mengembangkan program pelatihan untuk meningkatkan kompetensi tenaga pendidik.</div></div>
+          <div class="role-card"><div class="role-name">Training Specialist</div><div class="role-desc">Mendesain dan mengelola pelatihan profesional bagi guru.</div></div>
+          <div class="role-card"><div class="role-name">Training Officer</div><div class="role-desc">Mengorganisasi pelaksanaan pelatihan serta memastikan tujuan pembelajaran tercapai.</div></div>
+          <div class="role-card"><div class="role-name">Educational Technology Specialist</div><div class="role-desc">Mengintegrasikan teknologi digital ke dalam program pelatihan guru.</div></div>
+          <div class="role-card"><div class="role-name">Digital Learning Specialist</div><div class="role-desc">Mengembangkan strategi pembelajaran digital dan pemanfaatan platform pembelajaran.</div></div>
+          <div class="role-card"><div class="role-name">Learning Experience (LX) Designer</div><div class="role-desc">Mendesain pengalaman belajar yang menarik, interaktif, dan berpusat pada kebutuhan guru.</div></div>
+          <div class="role-card"><div class="role-name">Learning Content Developer</div><div class="role-desc">Mengembangkan modul, video, infografis, dan media pembelajaran untuk pelatihan.</div></div>
+          <div class="role-card"><div class="role-name">E-Learning Developer</div><div class="role-desc">Mengubah materi pelatihan menjadi kursus online pada LMS seperti Moodle atau Google Classroom.</div></div>
+          <div class="role-card"><div class="role-name">Teacher Professional Development Specialist</div><div class="role-desc">Merancang program pengembangan profesional berkelanjutan bagi guru.</div></div>
+          <div class="role-card"><div class="role-name">Curriculum Developer</div><div class="role-desc">Menyusun struktur pelatihan, capaian pembelajaran, dan urutan materi sesuai kebutuhan peserta.</div></div>
+          <div class="role-card"><div class="role-name">Education Consultant</div><div class="role-desc">Memberikan rekomendasi strategi pelatihan dan transformasi digital di sekolah atau lembaga pendidikan.</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">LearniX</div>
+          <p class="footer-tagline">Platform belajar bagi mahasiswa dan fresh graduate Teknologi Pendidikan untuk mengasah skill dan meraih karier impian.</p>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col"><h4>Navigasi</h4><a href="index.html">Home</a><a href="project.html">Project</a><a href="about.html">About</a></div>
+          <div class="footer-col"><h4>Kontak</h4><a href="#">hello@learnix.space</a><a href="#">Surabaya, Indonesia</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 Learnix Space. All rights reserved.</div>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none"><path d="M6.5 8.5v10M6.5 5.5v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 18.5v-6a3 3 0 016 0v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M11 9.5l4 2.5-4 2.5v-5z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
