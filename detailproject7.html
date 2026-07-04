@@ -26,6 +26,11 @@
   .menu a:hover{color:#6b7280;}
   .menu a.active{color:var(--blue);}
   .menu a.active::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:var(--blue);border-radius:3px;}
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:30px;height:24px;background:none;border:none;cursor:pointer;padding:0;z-index:20;}
+  .nav-toggle span{display:block;width:100%;height:2.5px;background:var(--logo);border-radius:2px;transition:transform .25s ease,opacity .25s ease;}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
 
   /* DETAIL HEADER */
   .detail{padding:16px 0 90px;}
@@ -107,7 +112,14 @@
   }
   @media (max-width:520px){
     .wrap{padding:0 20px;}
-    .menu{display:none;}
+    .nav-toggle{display:flex;}
+    .menu{
+      display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;
+      transform:none;flex-direction:column;align-items:center;gap:20px;
+      background:#fff;padding:22px 0;border-radius:16px;
+      box-shadow:0 14px 34px rgba(20,30,50,.14);z-index:15;
+    }
+    .menu.open{display:flex;}
     .footer-bottom{flex-direction:column;text-align:center;gap:16px;}
   }
 </style>
@@ -123,11 +135,15 @@
         </span>
         <span class="space">SPACE</span>
       </div>
-      <div class="menu">
+      <div class="menu" id="navMenu">
         <a href="index.html">Home</a>
         <a href="project.html" class="active">Project</a>
         <a href="about.html">About</a>
       </div>
+    
+      <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
 
     <!-- DETAIL -->
@@ -236,7 +252,6 @@
         </div>
         <div class="footer-cols">
           <div class="footer-col"><h4>Navigasi</h4><a href="index.html">Home</a><a href="project.html">Project</a><a href="about.html">About</a></div>
-          <div class="footer-col"><h4>Program</h4><a href="#">Webinar</a><a href="#">Kompetisi</a><a href="#">Workshop</a></div>
           <div class="footer-col"><h4>Kontak</h4><a href="#">hello@learnix.space</a><a href="#">Surabaya, Indonesia</a></div>
         </div>
       </div>
@@ -251,5 +266,22 @@
     </div>
   </footer>
 
+
+  <script>
+    var navToggle = document.getElementById('navToggle');
+    var navMenu = document.getElementById('navMenu');
+    navToggle.addEventListener('click', function(){
+      var isOpen = navMenu.classList.toggle('open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+    navMenu.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navMenu.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded','false');
+      });
+    });
+  </script>
 </body>
 </html>
