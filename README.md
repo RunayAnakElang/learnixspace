@@ -17,7 +17,7 @@
 
 ---
 
-## 📖 Tentang
+## Deskripsi
 
 **Learnix Space** adalah platform belajar berbasis website untuk mahasiswa dan *fresh graduate* di bidang **Teknologi Pendidikan (TP)**. Platform ini menyediakan materi pembelajaran, referensi proyek, dan showcase karya untuk mengasah skill yang relevan dengan kebutuhan industri dan mempersiapkan diri menghadapi dunia kerja.
 
